@@ -4,9 +4,6 @@ import ArtworkDossier from '../components/ArtworkDossier.jsx'
 import ArtworkFrame from '../components/ArtworkFrame.jsx'
 import useInvestigation from '../context/useInvestigation.js'
 import evidenceRecords from '../data/evidence.json'
-import teamMembers from '../data/teamMembers.js'
-
-const fernando = teamMembers.find((member) => member.slug === 'fernando-ezequiel-baca')
 
 const artworks = [
   {
@@ -14,7 +11,6 @@ const artworks = [
     number: '01',
     evidenceId: 'FIS-02',
     title: 'El retrato de Adán',
-    person: 'Mateo Israel Adan',
     location: 'Muro norte · Sala principal',
   },
   {
@@ -22,7 +18,6 @@ const artworks = [
     number: '02',
     evidenceId: 'FIS-03',
     title: 'La mirada de Raúl',
-    person: 'Raúl Alberto Mata Botana',
     location: 'Muro central · Sala principal',
   },
   {
@@ -30,7 +25,6 @@ const artworks = [
     number: '03',
     evidenceId: 'FIS-07',
     title: 'El retrato de Fernando',
-    person: fernando.name,
     location: 'Muro este · Sala principal',
   },
 ]

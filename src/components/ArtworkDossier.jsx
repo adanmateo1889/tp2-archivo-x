@@ -5,20 +5,20 @@ import raulPortrait from '../assets/images/raul-retrato.png'
 const artworkImages = {
   'obra-01': {
     src: adanPortrait,
-    alt: 'Retrato artístico de Adán Mateo enmarcado como una pintura clásica.',
+    alt: 'Imagen de archivo de la obra sustraída «El retrato de Adán».',
   },
   'obra-02': {
     src: raulPortrait,
-    alt: 'Retrato impresionista de Raúl Mata con marco dorado.',
+    alt: 'Imagen de archivo de la obra sustraída «La mirada de Raúl».',
   },
   'obra-03': {
     src: fernandoPortrait,
-    alt: 'Retrato artístico de Fernando Ezequiel Baca.',
+    alt: 'Imagen de archivo de la obra sustraída «El retrato de Fernando».',
   },
 }
 
 function ArtworkDossier({ artwork, evidence, isExamined, onRegisterEvidence }) {
-  const portrait = artworkImages[artwork.id]
+  const artworkImage = artworkImages[artwork.id]
 
   return (
     <article className="artwork-dossier" aria-labelledby="dossier-title">
@@ -32,32 +32,32 @@ function ArtworkDossier({ artwork, evidence, isExamined, onRegisterEvidence }) {
 
       <div className="dossier-body">
         <div className="dossier-artwork">
-          {portrait ? (
-            <img src={portrait.src} alt={portrait.alt} />
+          {artworkImage ? (
+            <img src={artworkImage.src} alt={artworkImage.alt} />
           ) : (
             <div
               className="portrait-pending"
               role="img"
-              aria-label="Retrato pendiente de recibir, integrante sin identificar"
+              aria-label="Imagen de la obra sustraída pendiente de incorporar"
             >
               <span className="pending-silhouette" aria-hidden="true">
                 <i />
                 <b />
               </span>
-              <strong>RETRATO PENDIENTE</strong>
-              <small>IDENTIDAD SIN CONFIRMAR</small>
+              <strong>IMAGEN DE OBRA PENDIENTE</strong>
+              <small>REGISTRO VISUAL NO DISPONIBLE</small>
             </div>
           )}
           <span className="artwork-image-caption">
-            {portrait ? 'REGISTRO ORIGINAL · TP1' : 'MATERIAL NO DISPONIBLE'}
+            {artworkImage ? 'REGISTRO ORIGINAL · TP1' : 'MATERIAL NO DISPONIBLE'}
           </span>
         </div>
 
         <div className="dossier-details">
           <dl className="dossier-metadata">
             <div>
-              <dt>IDENTIFICACIÓN</dt>
-              <dd>{artwork.person}</dd>
+              <dt>IDENTIFICACIÓN DE OBRA</dt>
+              <dd>OBRA {artwork.number}</dd>
             </div>
             <div>
               <dt>UBICACIÓN</dt>

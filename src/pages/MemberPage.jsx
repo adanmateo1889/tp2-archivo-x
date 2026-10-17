@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import InvestigatorPortrait from '../components/InvestigatorPortrait.jsx'
 import teamMembers from '../data/teamMembers.js'
 import NotFoundPage from './NotFoundPage.jsx'
 
@@ -16,6 +17,7 @@ function MemberPage() {
   const previousMember =
     teamMembers[(memberIndex - 1 + teamMembers.length) % teamMembers.length]
   const nextMember = teamMembers[(memberIndex + 1) % teamMembers.length]
+  const memberName = member.displayName ?? member.name
   const detailsId = `member-details-${member.id.toLowerCase()}`
 
   return (
@@ -25,38 +27,31 @@ function MemberPage() {
         PERSONAL AUTORIZADO · PERFIL INDIVIDUAL
       </div>
       <p className="section-kicker">EXPEDIENTE DE PERSONAL · {member.id}</p>
-      <h1>{member.name}</h1>
+      <h1>{memberName}</h1>
 
       <nav className="member-profile-navigation" aria-label="Navegación entre integrantes">
-        <Link to={`/equipo/${previousMember.slug}`} aria-label={`Perfil anterior: ${previousMember.name}`}>
+        <Link to={`/equipo/${previousMember.slug}`} aria-label={`Perfil anterior: ${previousMember.displayName ?? previousMember.name}`}>
           <span aria-hidden="true">←</span>
-          <span><small>ANTERIOR</small>{previousMember.name}</span>
+          <span><small>ANTERIOR</small>{previousMember.displayName ?? previousMember.name}</span>
         </Link>
         <Link to="/equipo">Volver al equipo</Link>
-        <Link to={`/equipo/${nextMember.slug}`} aria-label={`Perfil siguiente: ${nextMember.name}`}>
-          <span><small>SIGUIENTE</small>{nextMember.name}</span>
+        <Link to={`/equipo/${nextMember.slug}`} aria-label={`Perfil siguiente: ${nextMember.displayName ?? nextMember.name}`}>
+          <span><small>SIGUIENTE</small>{nextMember.displayName ?? nextMember.name}</span>
           <span aria-hidden="true">→</span>
         </Link>
       </nav>
 
       <article className="member-profile-card">
         <div className="member-profile-photo">
-          {member.portrait ? (
-            <img src={member.portrait} alt={`Retrato de ${member.name}`} />
-          ) : (
-            <div
-              className="team-portrait-pending"
-              role="img"
-              aria-label={`Retrato pendiente de ${member.name}`}
-            >
-              <span aria-hidden="true">FOTO PENDIENTE</span>
-            </div>
-          )}
-          <span className="member-profile-photo-id">{member.id} · TP1</span>
+          <InvestigatorPortrait
+            className="member-investigator-portrait"
+            member={member}
+          />
+          <span className="member-profile-photo-id">{member.id} · ARCHIVO X</span>
         </div>
         <div className="member-profile-summary">
           <p className="section-kicker">FICHA DE IDENTIFICACIÓN</p>
-          <h2>{member.name}</h2>
+          <h2>{memberName}</h2>
           <p className="member-profile-role">INVESTIGADOR/A · GALERÍA CÓDIGO</p>
           <p className="member-profile-presentation">
             {member.presentation ??
@@ -76,7 +71,7 @@ function MemberPage() {
       </article>
 
       {isDetailsOpen && (
-        <section className="member-details-panel" id={detailsId} aria-label={`Ficha ampliada de ${member.name}`}>
+        <section className="member-details-panel" id={detailsId} aria-label={`Ficha ampliada de ${memberName}`}>
           <div className="member-details-section">
             <p className="section-kicker">HABILIDADES E INTERESES</p>
             {member.skillsAndInterests ? (

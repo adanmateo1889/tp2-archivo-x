@@ -6,7 +6,6 @@ import EvidenceArchivePage from './pages/EvidenceArchivePage.jsx'
 import InvestigationBoardPage from './pages/InvestigationBoardPage.jsx'
 import CaseResolutionPage from './pages/CaseResolutionPage.jsx'
 import CaseResultPage from './pages/CaseResultPage.jsx'
-import ArtInstituteArchivePage from './pages/ArtInstituteArchivePage.jsx'
 import ComponentTreePage from './pages/ComponentTreePage.jsx'
 import DevelopmentLogPage from './pages/DevelopmentLogPage.jsx'
 import MemberPage from './pages/MemberPage.jsx'
@@ -40,10 +39,6 @@ function App() {
         <Route
           path="evidencias"
           element={<EvidenceArchivePage />}
-        />
-        <Route
-          path="investigacion-api"
-          element={<ArtInstituteArchivePage />}
         />
         <Route
           path="arbol-componentes"

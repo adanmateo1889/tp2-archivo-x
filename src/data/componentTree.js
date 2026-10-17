@@ -69,7 +69,7 @@ const componentTree = {
                                   kind: 'layout',
                                   source: 'src/components/layout/Sidebar.jsx',
                                   description:
-                                    'Presenta la navegación principal, la ruta activa y la acción confirmada para reiniciar el progreso.',
+                                    'Presenta la navegación principal, el control de música ambiental y la acción confirmada para reiniciar el progreso.',
                                   usageNote:
                                     'AppLayout la renderiza una vez; NavIcon se instancia para los íconos de navegación.',
                                   contexts: ['InvestigationContext'],
@@ -83,6 +83,16 @@ const componentTree = {
                                         'Componente local de Sidebar que dibuja el SVG correspondiente a cada sección.',
                                       usageNote:
                                         'Una única definición renderizada como varias instancias dentro del menú.',
+                                    },
+                                    {
+                                      id: 'background-music',
+                                      label: 'BackgroundMusic',
+                                      kind: 'reusable',
+                                      source: 'src/components/BackgroundMusic.jsx',
+                                      description:
+                                        'Reproduce una grabación local autorizada solo tras interacción, con fade-in/fade-out, volumen máximo de 12 %, bucle y preferencia guardada en localStorage.',
+                                      usageNote:
+                                        'Se mantiene montado dentro de Sidebar al navegar y usa la grabación Ogg/Vorbis autorizada servida desde public/audio.',
                                     },
                                   ],
                                 },
@@ -221,27 +231,6 @@ const componentTree = {
                                       contexts: ['InvestigationContext'],
                                     },
                                     {
-                                      id: 'art-institute-page',
-                                      label: 'ArtInstituteArchivePage',
-                                      kind: 'page',
-                                      source: 'src/pages/ArtInstituteArchivePage.jsx',
-                                      routes: ['/investigacion-api'],
-                                      description:
-                                        'Consulta la API pública del Art Institute of Chicago y representa registros externos de dominio público.',
-                                      children: [
-                                        {
-                                          id: 'artwork-reference-card',
-                                          label: 'ArtworkReferenceCard',
-                                          kind: 'reusable',
-                                          source: 'src/components/ArtworkReferenceCard.jsx',
-                                          description:
-                                            'Ficha de una obra externa con título, autoría, fecha, imagen IIIF disponible y enlace al museo.',
-                                          usageNote:
-                                            'Se instancia por cada registro recibido; no forma parte del archivo de evidencias del caso.',
-                                        },
-                                      ],
-                                    },
-                                    {
                                       id: 'component-tree-page',
                                       label: 'ComponentTreePage',
                                       kind: 'page',
@@ -269,7 +258,19 @@ const componentTree = {
                                       source: 'src/pages/TeamPage.jsx',
                                       routes: ['/equipo'],
                                       description:
-                                        'Presenta el listado de las cinco personas confirmadas y enlaza cada credencial con su perfil estable.',
+                                        'Presenta al equipo investigador con retratos personales independientes de las obras robadas y enlaza cada credencial con su perfil estable.',
+                                      children: [
+                                        {
+                                          id: 'investigator-portrait',
+                                          label: 'InvestigatorPortrait',
+                                          kind: 'reusable',
+                                          source: 'src/components/InvestigatorPortrait.jsx',
+                                          description:
+                                            'Carga la fotografía de una persona investigadora desde una ruta pública y usa un avatar neutral si falta o no se puede cargar.',
+                                          usageNote:
+                                            'Se reutiliza en la portada, el directorio y los perfiles individuales; no consume imágenes de las obras del caso.',
+                                        },
+                                      ],
                                     },
                                     {
                                       id: 'member-page',
@@ -319,6 +320,18 @@ const componentTree = {
                                       routes: ['/documentacion'],
                                       description:
                                         'Explica navegación, tecnologías, persistencia local y fuentes de datos, con enlaces internos a las secciones vigentes.',
+                                      children: [
+                                        {
+                                          id: 'art-institute-api-status',
+                                          label: 'ArtInstituteApiStatus',
+                                          kind: 'reusable',
+                                          source: 'src/components/ArtInstituteApiStatus.jsx',
+                                          description:
+                                            'Verifica la API pública del Art Institute of Chicago sin consultar ni mostrar imágenes.',
+                                          usageNote:
+                                            'Se muestra en Documentación para conservar la integración académica con carga, error, respuesta vacía y reintento.',
+                                        },
+                                      ],
                                     },
                                     {
                                       id: 'not-found-page',

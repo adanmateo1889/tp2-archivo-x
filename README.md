@@ -8,15 +8,15 @@ ARCHIVO X es una aplicación web interactiva de investigación. El visitante rec
 
 ## Relación con el TP1: Galería Código
 
-El proyecto continúa la identidad narrativa y visual de **Galería Código**, el sitio grupal del TP1 que presentaba a los cinco integrantes como obras de una colección. En este TP2, esa galería es el escenario de una investigación ficticia. Los retratos disponibles del TP1 se reutilizan en la escena y en los perfiles del equipo; no se alteraron los archivos originales del TP1.
+El proyecto continúa la identidad narrativa y visual de **Galería Código**, el sitio grupal del TP1 cuya colección sirve de antecedente visual para la investigación ficticia de este TP2. En ARCHIVO X, los cinco integrantes son investigadores; las obras sustraídas pertenecen al expediente del caso y no se usan como sus fotografías personales. Los recursos heredados que aparecen en la escena se conservaron sin alteraciones.
 
 ## Equipo
 
-Los siguientes enlaces corresponden a perfiles públicos de GitHub configurados en el proyecto y verificados durante la preparación de esta documentación. Se enlazan las cuentas, sin atribuirles responsabilidades individuales en el TP2.
+Los siguientes enlaces corresponden a perfiles públicos de GitHub configurados en el proyecto. Se enlazan las cuentas, sin atribuirles responsabilidades individuales en el TP2.
 
 | Integrante | GitHub |
 |---|---|
-| Mateo Israel Adan | [adanmateo1889](https://github.com/adanmateo1889) |
+| Adán Mateo (Mateo Israel Adan) | [adanmateo1889](https://github.com/adanmateo1889) |
 | Fernando Ezequiel Baca | [fernando-eb2406](https://github.com/fernando-eb2406) |
 | Carmen Leonela Lamas | [Carleu27](https://github.com/Carleu27) |
 | Raúl Alberto Mata Botana | [RaulMataBotana](https://github.com/RaulMataBotana) |
@@ -72,10 +72,9 @@ Vite mostrará en la terminal la dirección local para abrir la aplicación en e
 | `/tablero-de-pistas` | Mesa para relacionar evidencias y desbloquear deducciones. |
 | `/resolver-caso` | Formulario de acusación disponible al completar las deducciones. |
 | `/resultado` | Desenlace, accesible tras resolver correctamente el caso. |
-| `/investigacion-api` | Consulta externa de obras de arte del Art Institute of Chicago. |
 | `/arbol-componentes` | Árbol navegable de componentes React representados en la aplicación. |
 | `/bitacora` | Línea de tiempo del desarrollo por etapas. |
-| `/documentacion` | Guía de navegación y funcionamiento de la aplicación. |
+| `/documentacion` | Guía de navegación y funcionamiento, con una verificación mínima de la API externa. |
 
 Las rutas desconocidas muestran una página 404. `/inicio` redirige a la portada.
 
@@ -85,7 +84,7 @@ Las rutas desconocidas muestran una página 404. `/inicio` redirige a la portada
 - **Archivo de evidencias:** presenta los 25 registros del JSON local; permite buscar sin distinguir mayúsculas por código, título y descripción, filtrar por categoría y combinar ambos criterios. Cada ficha puede expandirse y la vista incluye contador, estado vacío y restablecimiento de filtros.
 - **Sospechosos:** presenta cinco personajes ficticios. Sus fichas distinguen hechos registrados, testimonios, tensiones por corroborar y preguntas abiertas. Las referencias apuntan a IDs existentes del archivo local. La página no identifica al responsable.
 - **Tablero de investigación:** permite relacionar dos evidencias, informa cuando una relación no es concluyente y muestra las deducciones desbloqueadas por fases. La interfaz no presenta por anticipado la resolución del caso.
-- **Resolución:** permite acusar cuando se desbloquean las siete deducciones. Una acusación incorrecta invita a revisar el expediente sin revelar la respuesta; una correcta habilita el desenlace.
+- **Resolución:** el botón se habilita al completar responsable, método y motivo; la evaluación sigue bloqueada hasta descubrir las siete deducciones. Una acusación incorrecta abre una pantalla de resultado que no revela la solución y permite revisar o reintentar; una correcta habilita el desenlace.
 - **Progreso:** se puede reiniciar la investigación mediante la opción de la sidebar y su confirmación.
 - **Perfiles del equipo:** las tarjetas enlazan a cinco páginas individuales reutilizadas mediante una ruta dinámica. La información no disponible se deja sin completar, en lugar de inventarla.
 - **Navegación responsive:** layout compartido, sidebar adaptable y rutas internas para recorrer el proyecto.
@@ -115,15 +114,13 @@ La persistencia es local al navegador y al dispositivo: no hay una cuenta de usu
 
 ## API pública
 
-La sección `/investigacion-api` utiliza `fetch` y `useEffect` para consultar el endpoint de búsqueda del [Art Institute of Chicago API](https://api.artic.edu/docs/):
+Para conservar el requisito académico de consumir una API pública, la página `/documentacion` verifica con `fetch` y `useEffect` la API del [Art Institute of Chicago](https://api.artic.edu/docs/):
 
 ```text
-https://api.artic.edu/api/v1/artworks/search?q=painting&limit=24&fields=id,title,artist_display,date_display,image_id,api_link,is_public_domain
+https://api.artic.edu/api/v1/artworks/search?q=painting&limit=24&fields=id,title,artist_display,date_display,is_public_domain
 ```
 
-La interfaz filtra los resultados marcados como dominio público y muestra hasta 12 registros, con título, artista, fecha, imagen cuando está disponible y enlace a la ficha del museo. Incluye estados de carga, error, ausencia de resultados, reintento y actualización. La API puede devolver menos registros o no incluir imágenes para algunas obras.
-
-Estas obras son **referencias externas reales** y no forman parte de `evidence.json`, no se guardan como progreso y no son pistas del caso ficticio.
+El panel muestra estados de carga, éxito, error y ausencia de resultados, permite reintentar y presenta un registro real de dominio público recibido. **No descarga ni muestra imágenes**: se retiró la galería externa y sus solicitudes IIIF. Esta comprobación de metadatos está separada de las evidencias ficticias de `evidence.json`, no se guarda como progreso y no interviene en el misterio. La consulta requiere conexión a Internet y puede estar temporalmente indisponible.
 
 ## Árbol de componentes y bitácora
 
@@ -134,9 +131,11 @@ Estas obras son **referencias externas reales** y no forman parte de `evidence.j
 
 ```text
 .
-├── public/                  # Recursos estáticos públicos
+├── public/
+│   ├── audio/               # Música ambiental
+│   └── img/investigadores/  # Fotografías personales y avatar provisional
 ├── src/
-│   ├── assets/              # Imágenes del proyecto y retratos
+│   ├── assets/              # Recursos gráficos locales; incluye imágenes de obras del caso
 │   ├── components/
 │   │   └── layout/          # AppLayout y Sidebar compartidos
 │   ├── context/             # Context, Provider y hook de investigación
@@ -151,7 +150,34 @@ Estas obras son **referencias externas reales** y no forman parte de `evidence.j
 └── README.md
 ```
 
-Los componentes compartidos principales son `ArtworkFrame`, `ArtworkDossier`, `EvidenceCard`, `ClueCard`, `DeductionCard`, `SuspectCard` y `ArtworkReferenceCard`. Las páginas individuales del equipo se resuelven con `MemberPage` y la ruta dinámica `/equipo/:slug`.
+Los componentes compartidos principales son `ArtworkFrame`, `ArtworkDossier`, `EvidenceCard`, `ClueCard`, `DeductionCard`, `SuspectCard`, `ArtInstituteApiStatus`, `InvestigatorPortrait` y `BackgroundMusic`. Las páginas individuales del equipo se resuelven con `MemberPage` y la ruta dinámica `/equipo/:slug`.
+
+### Fotografías del equipo
+
+Las fotos de investigadores se sirven desde `public/img/investigadores/`, separadas de las imágenes originales utilizadas por las obras del caso. Para agregar o reemplazar una foto, guardá un archivo JPEG con el nombre exacto correspondiente; no hace falta modificar componentes de React:
+
+| Integrante | Ruta pública |
+|---|---|
+| Adán Mateo | `public/img/investigadores/adan-mateo.png` |
+| Fernando Ezequiel Baca | `public/img/investigadores/fernando-ezequiel-baca.jpg` |
+| Carmen Leonela Lamas | `public/img/investigadores/carmen-leonela-lamas.jpg` |
+| Raúl Alberto Mata Botana | `public/img/investigadores/raul-alberto-mata-botana.jpg` |
+| Marcelo Yrala | `public/img/investigadores/marcelo-yrala.jpg` |
+
+Si alguna ruta no contiene una imagen que pueda cargarse, `InvestigatorPortrait` muestra automáticamente `public/img/investigadores/avatar-investigador.svg`. Adán tiene asignada la ruta `adan-mateo.png`, pero el archivo todavía no está presente en el directorio de recursos; hasta incorporarlo se muestra el avatar. Los otros cuatro perfiles conservan el avatar provisional hasta que se incorporen sus fotografías.
+
+## Música ambiental
+
+La composición elegida es *Gymnopédie No. 1*, de Erik Satie. El reproductor usa `public/audio/ambient-mystery.ogg`, un archivo Ogg/Vorbis (no MP3) cuya huella SHA-1 coincide con el archivo de Wikimedia Commons citado abajo.
+
+**Créditos y licencia de la grabación**
+
+- Composición: Erik Satie, *Gymnopédie No. 1* (composición de dominio público).
+- Intérprete/autor indicado en los metadatos y en Wikimedia Commons: Robin Alciatore.
+- Fuente/crédito de origen: [Musopen](https://musopen.org/), según la ficha de [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Erik_Satie_-_gymnopedies_-_la_1_ere._lent_et_douloureux.ogg).
+- Licencia indicada por Wikimedia Commons: dominio público. La ficha reproduce la declaración de Musopen de que sus grabaciones son de dominio público; Musopen solicita, como cortesía, no vender directamente sus grabaciones y atribuir Musopen a obras comerciales o derivadas.
+
+`BackgroundMusic` está integrado en la sidebar y mantiene una sola instancia al navegar. La reproducción requiere activación explícita y no comienza al cargar o recargar, aunque `localStorage` recuerde la preferencia. El audio se reproduce en bucle con volumen máximo de 12 %, fade-in de 2 segundos y fade-out de 1,5 segundos.
 
 ## Asistencia de inteligencia artificial
 
@@ -159,19 +185,21 @@ La preparación de esta documentación y la revisión de datos del repositorio e
 
 ## Pruebas y verificaciones
 
-Al preparar esta documentación se ejecutaron:
+En esta revisión final se ejecutaron:
 
 ```bash
-npm run lint
-npm run build
+npm.cmd run lint
+npm.cmd run build
 ```
 
-Ambos comandos finalizaron correctamente. La auditoría previa también comprobó manualmente rutas, estados del juego, persistencia y reinicio, estados de la API, navegación por teclado y diseño responsive en 390 px, 768 px y escritorio.
+Ambos comandos finalizaron correctamente. Una verificación funcional con Playwright recorrió las rutas principales y los cinco perfiles; comprobó las fichas ampliables, navegación entre integrantes, expediente de una obra, respuesta de la API, fallback de imágenes y apertura del menú móvil. También confirmó una sola instancia de audio, activación explícita, continuidad al navegar, volumen máximo de 12 % y que una preferencia guardada no inicia la reproducción tras recargar. No se observó desbordamiento horizontal a 390 px, 768 px ni 1440 px. La prueba actual no repitió el recorrido completo de deducciones y acusación; esa funcionalidad no se modificó en esta revisión.
+
+La API del Art Institute respondió con registros en pruebas anteriores. La versión de entrega verifica únicamente la API JSON; ya no incluye solicitudes IIIF ni galería de imágenes externas.
 
 ## Créditos y fuentes
 
-- **Art Institute of Chicago:** API pública, registros e imágenes servidas mediante IIIF; consultar la [documentación oficial de la API](https://api.artic.edu/docs/).
-- **Galería Código (TP1):** se reutilizan los retratos y recursos locales disponibles en `src/assets/`. La procedencia y las condiciones de uso originales deben conservarse según la documentación del TP1.
+- **Art Institute of Chicago:** API pública para consultar metadatos de obras; consultar la [documentación oficial de la API](https://api.artic.edu/docs/). Esta versión no incorpora imágenes externas.
+- **Galería Código (TP1):** las imágenes heredadas de `src/assets/images/` siguen disponibles como recursos de las obras representadas en la escena; no se utilizan como fotos del equipo en portada, directorio ni perfiles. La procedencia y las condiciones de uso originales deben conservarse según la documentación del TP1.
 - **Identidad visual:** paleta, composición del expediente, marcos y recursos CSS integrados en este proyecto.
 
 No se encontró en los archivos revisados una atribución individual o licencia detallada para todos los recursos visuales heredados. El equipo debe confirmar esa información antes de publicar.
@@ -184,6 +212,7 @@ No se encontró en los archivos revisados una atribución individual o licencia 
 
 - Enlace de despliegue en Vercel.
 - Procedencia y licencia o autorización de uso de los recursos visuales heredados, si corresponde.
+- Incorporar las fotografías personales del equipo en las rutas documentadas cuando estén disponibles; hasta entonces, los perfiles usan el avatar provisional.
 - Si la cátedra solicita algún requisito adicional que no esté descrito en la consigna disponible para este repositorio.
-- Presentación y habilidades/intereses de Mateo Israel Adan, si el equipo desea completar su perfil.
+- Presentación y habilidades/intereses de Adán Mateo (Mateo Israel Adan), si el equipo desea completar su perfil.
 - Participaciones individuales del equipo, únicamente si desean documentarlas y pueden verificarlas.

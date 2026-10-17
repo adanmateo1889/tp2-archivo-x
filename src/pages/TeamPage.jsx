@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import InvestigatorPortrait from '../components/InvestigatorPortrait.jsx'
 import teamMembers from '../data/teamMembers.js'
 
 function TeamPage() {
@@ -22,25 +23,18 @@ function TeamPage() {
             className="team-member-card"
             key={member.id}
             to={`/equipo/${member.slug}`}
-            aria-label={`Abrir expediente personal de ${member.name}`}
+            aria-label={`Abrir expediente personal de ${member.displayName ?? member.name}`}
           >
             <span className="team-member-photo">
-              {member.portrait ? (
-                <img src={member.portrait} alt={`Retrato de ${member.name}`} />
-              ) : (
-                <span
-                  className="team-portrait-pending"
-                  role="img"
-                  aria-label={`Retrato pendiente de ${member.name}`}
-                >
-                  <span aria-hidden="true">FOTO PENDIENTE</span>
-                </span>
-              )}
+              <InvestigatorPortrait
+                className="team-investigator-portrait"
+                member={member}
+              />
               <span className="team-member-photo-id">{member.id}</span>
             </span>
             <span className="team-member-card-details">
               <span>INVESTIGADOR/A · CREDENCIAL {member.id.slice(-2)}</span>
-              <strong>{member.name}</strong>
+              <strong>{member.displayName ?? member.name}</strong>
               <small>ABRIR EXPEDIENTE <span aria-hidden="true">↗</span></small>
             </span>
           </Link>
@@ -50,9 +44,10 @@ function TeamPage() {
       <aside className="team-record-note">
         <span aria-hidden="true">!</span>
         <p>
-          Los retratos y datos personales proceden de Galería Código (TP1). No se
-          asignan responsabilidades individuales en ARCHIVO X que no estén
-          documentadas.
+          Las fotografías de investigadores se gestionan por separado de las
+          obras robadas. Mientras no haya una foto en la ruta asignada, se
+          muestra un avatar neutro. Los datos personales provienen de Galería
+          Código (TP1); no se atribuyen responsabilidades no documentadas.
         </p>
       </aside>
     </section>

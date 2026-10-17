@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import useInvestigation from '../../context/useInvestigation.js'
+import BackgroundMusic from '../BackgroundMusic.jsx'
 
 const navigationGroups = [
   {
@@ -17,15 +18,14 @@ const navigationGroups = [
     links: [
       { to: '/equipo', label: 'Equipo investigador', number: '06', icon: 'team' },
       { to: '/evidencias', label: 'Archivo de evidencias', number: '07', icon: 'evidence' },
-      { to: '/investigacion-api', label: 'Consulta externa', number: '08', icon: 'globe' },
     ],
   },
   {
     label: 'Proyecto',
     links: [
-      { to: '/arbol-componentes', label: 'Árbol de componentes', number: '09', icon: 'tree' },
-      { to: '/bitacora', label: 'Bitácora', number: '10', icon: 'log' },
-      { to: '/documentacion', label: 'Documentación', number: '11', icon: 'manual' },
+      { to: '/arbol-componentes', label: 'Árbol de componentes', number: '08', icon: 'tree' },
+      { to: '/bitacora', label: 'Bitácora', number: '09', icon: 'log' },
+      { to: '/documentacion', label: 'Documentación', number: '10', icon: 'manual' },
     ],
   },
 ]
@@ -38,7 +38,6 @@ const iconPaths = {
   file: <><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v5h5M9 13h6M9 17h6" /></>,
   team: <><circle cx="9" cy="8" r="2.5" /><circle cx="17" cy="9" r="2" /><path d="M3.5 19c.3-3.3 2-5 5.5-5s5.2 1.7 5.5 5M15 14c3.4-.5 5.3 1 5.5 4" /></>,
   evidence: <><path d="M5 4h14v17H5z" /><path d="M8 8h8M8 12h8M8 16h5" /></>,
-  globe: <><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" /></>,
   tree: <><circle cx="12" cy="5" r="2" /><circle cx="6" cy="18" r="2" /><circle cx="18" cy="18" r="2" /><path d="M12 7v5M6 16v-4h12v4" /></>,
   log: <><path d="M5 4h14v17H5zM8 8h8M8 12h8M8 16h5" /></>,
   manual: <><path d="M4 5.5A3.5 3.5 0 0 1 7.5 4H20v16H7.5A3.5 3.5 0 0 0 4 21z" /><path d="M4 5v16M8 8h8M8 12h8" /></>,
@@ -111,6 +110,8 @@ function Sidebar({ isOpen, onNavigate }) {
           </div>
         ))}
       </nav>
+
+      <BackgroundMusic src="/audio/ambient-mystery.ogg" />
 
       <button
         className="reset-investigation-button"

@@ -5,7 +5,7 @@ import caseData from '../data/caseData.js'
 import suspects from '../data/suspects.js'
 
 function CaseResultPage() {
-  const { caseResolved } = useInvestigation()
+  const { accusationResult, caseResolved } = useInvestigation()
   const [solution, setSolution] = useState(null)
   const [loadError, setLoadError] = useState(false)
 
@@ -34,6 +34,32 @@ function CaseResultPage() {
   }, [caseResolved])
 
   if (!caseResolved) {
+    if (accusationResult === 'incorrect') {
+      return (
+        <section className="placeholder-page case-result-page">
+          <div className="eyebrow">
+            <span className="eyebrow-line" />
+            ARCHIVO AX-001 · ACUSACIÓN NO CONFIRMADA
+          </div>
+          <p className="section-kicker">RESULTADO DE LA INVESTIGACIÓN</p>
+          <h1>La hipótesis no coincide</h1>
+          <p className="placeholder-description">
+            La acusación presentada no coincide con todas las pruebas. El caso
+            continúa abierto; revisá tus deducciones y podés volver a intentarlo.
+            La solución no se revela en este resultado.
+          </p>
+          <div className="case-result-actions">
+            <Link className="text-link" to="/tablero-de-pistas">
+              Revisar el tablero <span aria-hidden="true">→</span>
+            </Link>
+            <Link className="text-link" to="/resolver-caso">
+              Volver a presentar la acusación <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </section>
+      )
+    }
+
     return <Navigate replace to="/resolver-caso" />
   }
 

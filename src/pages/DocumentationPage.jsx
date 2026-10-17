@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import ArtInstituteApiStatus from '../components/ArtInstituteApiStatus.jsx'
 
 const routeGroups = [
   {
@@ -16,7 +17,6 @@ const routeGroups = [
     links: [
       { to: '/equipo', label: 'Equipo investigador', description: 'Perfiles de los cinco integrantes del grupo.' },
       { to: '/evidencias', label: 'Archivo de evidencias', description: 'Consulta local de 25 evidencias con búsqueda y filtros.' },
-      { to: '/investigacion-api', label: 'Archivo externo', description: 'Referencias de obras consultadas en la API del museo.' },
     ],
   },
   {
@@ -39,7 +39,7 @@ function DocumentationPage() {
       <h1>Documentación</h1>
       <p className="placeholder-description">
         ARCHIVO X es una aplicación React con rutas internas, un caso
-        interactivo y secciones de consulta del proyecto. Usá esta guía para
+        interactivo y documentación de sus fuentes de datos. Usá esta guía para
         recorrer las áreas disponibles y entender cómo se conserva el avance.
       </p>
 
@@ -57,7 +57,7 @@ function DocumentationPage() {
         <article>
           <span>FUENTES DE DATOS</span>
           <h2>JSON local · API pública</h2>
-          <p>Las evidencias ficticias se mantienen separadas de las referencias externas del museo.</p>
+          <p>Las evidencias ficticias son locales; una consulta independiente verifica la API del museo.</p>
         </article>
       </section>
 
@@ -74,6 +74,8 @@ function DocumentationPage() {
           </ul>
         </section>
       ))}
+
+      <ArtInstituteApiStatus />
 
       <p className="documentation-storage-note">
         El progreso se guarda únicamente en el navegador actual. La opción

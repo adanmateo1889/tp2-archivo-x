@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import InvestigatorPortrait from '../components/InvestigatorPortrait.jsx'
 import teamMembers from '../data/teamMembers.js'
 
 const firstSteps = [
@@ -145,15 +146,13 @@ function HomePage() {
               key={member.id}
               to={`/equipo/${member.slug}`}
             >
-              <span className="mini-portrait">
-                {member.portrait ? (
-                  <img src={member.portrait} alt="" />
-                ) : (
-                  <span aria-hidden="true">{member.id.slice(-2)}</span>
-                )}
-              </span>
+              <InvestigatorPortrait
+                className="mini-portrait"
+                decorative
+                member={member}
+              />
               <span className="mini-profile">
-                <strong>{member.name}</strong>
+                <strong>{member.displayName ?? member.name}</strong>
                 <small>INVESTIGADOR/A</small>
               </span>
               <span className="mini-arrow" aria-hidden="true">↗</span>

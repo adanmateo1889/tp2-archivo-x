@@ -55,6 +55,11 @@ function CaseResolutionPage() {
 
   const hasAllDeductions = unlockedDeductionIds.length === deductions.length
   const hasCompleteAnswers = Object.values(answers).every(Boolean)
+  const missingAnswers = [
+    !answers.suspectId && 'responsable',
+    !answers.methodId && 'método',
+    !answers.motiveId && 'motivo',
+  ].filter(Boolean)
 
   if (caseResolved) {
     return <Navigate replace to="/resultado" />
@@ -67,7 +72,15 @@ function CaseResolutionPage() {
 
   async function handleSubmit(event) {
     event.preventDefault()
-    if (!hasAllDeductions || !hasCompleteAnswers || isSubmitting) {
+    if (!hasCompleteAnswers || isSubmitting) {
+      return
+    }
+
+    if (!hasAllDeductions) {
+      setFeedback({
+        type: 'error',
+        text: 'La acusación está completa, pero todavía no puede evaluarse. Completá las siete deducciones del tablero.',
+      })
       return
     }
 
@@ -81,6 +94,11 @@ function CaseResolutionPage() {
     try {
       const result = await submitAccusation(answers)
       if (result === 'correct' || result === 'already-resolved') {
+        navigate('/resultado', { replace: true })
+        return
+      }
+
+      if (result === 'incorrect') {
         navigate('/resultado', { replace: true })
         return
       }
@@ -185,13 +203,17 @@ function CaseResolutionPage() {
         )}
 
         <div className="accusation-submit-row">
-          <p>
-            Tus respuestas se evaluarán como una sola acusación. Un intento
-            incorrecto no revelará las respuestas correctas.
+          <p id="accusation-submit-help" aria-live="polite">
+            {missingAnswers.length > 0
+              ? `Falta completar: ${missingAnswers.join(', ')}.`
+              : hasAllDeductions
+                ? 'Acusación completa. Tus respuestas se evaluarán en conjunto; un intento incorrecto no revelará la solución.'
+                : 'Acusación completa. Para que se evalúe, primero completá las siete deducciones del tablero.'}
           </p>
           <button
             className="accusation-submit-button"
-            disabled={!hasAllDeductions || !hasCompleteAnswers || isSubmitting}
+            aria-describedby="accusation-submit-help"
+            disabled={!hasCompleteAnswers || isSubmitting}
             type="submit"
           >
             {isSubmitting ? 'EVALUANDO…' : 'PRESENTAR ACUSACIÓN'}
