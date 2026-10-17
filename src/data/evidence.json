@@ -1,0 +1,227 @@
+[
+  {
+    "id": "FIS-01",
+    "titulo": "El marco sin daños",
+    "categoria": "evidencias_fisicas",
+    "descripcion": "Los tres marcos están intactos; no hay vidrio roto, golpes ni marcas de palanca.",
+    "ubicacion": "Sala principal, muros norte, central y este",
+    "relevancia": "media",
+    "descripcionAmpliada": "La moldura y los anclajes no presentan fuerza reciente. Las obras se retiraron con cuidado, aunque el examen no permite determinar cuándo ni quién lo hizo."
+  },
+  {
+    "id": "FIS-02",
+    "titulo": "Una fibra carmesí",
+    "categoria": "evidencias_fisicas",
+    "descripcion": "Una fibra roja quedó enganchada en el borde inferior del marco del muro norte.",
+    "ubicacion": "Marco de El retrato de Adán",
+    "relevancia": "baja",
+    "descripcionAmpliada": "El color coincide a simple vista con el cordón de terciopelo usado para delimitar la zona de exposición. La fibra es común y no permite identificar por sí sola su origen."
+  },
+  {
+    "id": "FIS-03",
+    "titulo": "Escama de pigmento azul",
+    "categoria": "evidencias_fisicas",
+    "descripcion": "Una pequeña escama de pintura azul fue hallada en el piso, cerca del pasillo de servicio.",
+    "ubicacion": "Pasillo este, junto al acceso técnico",
+    "relevancia": "baja",
+    "descripcionAmpliada": "El pigmento es similar al utilizado en el mantenimiento de señalética del edificio. No se pudo asociar a una herramienta, persona u obra concreta."
+  },
+  {
+    "id": "FIS-04",
+    "titulo": "Adhesivo de montaje reciente",
+    "categoria": "evidencias_fisicas",
+    "descripcion": "En la parte posterior de los tres marcos hay restos recientes de cinta de montaje reversible.",
+    "ubicacion": "Reverso de los tres marcos",
+    "relevancia": "alta",
+    "descripcionAmpliada": "Los residuos aparecen en posiciones equivalentes y no están cubiertos por el polvo antiguo del muro. El adhesivo se usa en tareas de conservación, pero su presencia no determina quién lo aplicó ni qué material sostuvo."
+  },
+  {
+    "id": "FIS-05",
+    "titulo": "Filamentos detrás del anclaje",
+    "categoria": "evidencias_fisicas",
+    "descripcion": "Un filamento sintético quedó atrapado detrás de uno de los anclajes.",
+    "ubicacion": "Anclaje del muro central",
+    "relevancia": "alta",
+    "descripcionAmpliada": "El filamento no coincide con el lino descrito para las telas de la colección en el inventario técnico. Puede proceder de un material de montaje o de una tela distinta; requiere comparación con otras pruebas."
+  },
+  {
+    "id": "FIS-06",
+    "titulo": "Polvo de guante claro",
+    "categoria": "evidencias_fisicas",
+    "descripcion": "Se detectaron partículas de polvo claro sobre el borde interior del marco del muro este.",
+    "ubicacion": "Marco de la obra del muro este",
+    "relevancia": "baja",
+    "descripcionAmpliada": "La composición es compatible con el polvo de almidón de algunos guantes de manipulación, pero también con residuos habituales del depósito. No es una huella identificable."
+  },
+  {
+    "id": "FIS-07",
+    "titulo": "Huella de presión en el muro",
+    "categoria": "evidencias_fisicas",
+    "descripcion": "El polvo de la pared conserva un contorno rectangular más limpio alrededor de cada marco.",
+    "ubicacion": "Muros norte, central y este",
+    "relevancia": "media",
+    "descripcionAmpliada": "Los contornos son parecidos, aunque no idénticos. La limpieza local es compatible con el retiro de objetos de tamaño similar y no permite fecharlo con precisión."
+  },
+  {
+    "id": "FIS-08",
+    "titulo": "Anclajes pulidos",
+    "categoria": "evidencias_fisicas",
+    "descripcion": "Los ganchos conservan marcas de roce, pero no están doblados ni arrancados.",
+    "ubicacion": "Sistema de suspensión de la sala principal",
+    "relevancia": "media",
+    "descripcionAmpliada": "El desgaste parece compatible con retirar y volver a colgar marcos usando los soportes existentes. No hay señales de que se hayan forzado las puertas o el mobiliario de la sala."
+  },
+  {
+    "id": "DIG-01",
+    "titulo": "Interrupción de cámaras",
+    "categoria": "registros_digitales",
+    "descripcion": "El sistema de vigilancia dejó de grabar entre las 22:11 y las 22:18.",
+    "ubicacion": "Servidor de cámaras, registro del 18 de septiembre",
+    "relevancia": "alta",
+    "descripcionAmpliada": "El intervalo duró exactamente siete minutos. El registro indica pérdida de alimentación del circuito compartido; por sí solo no diferencia una falla de una intervención deliberada."
+  },
+  {
+    "id": "DIG-02",
+    "titulo": "Registro de accesos exteriores",
+    "categoria": "registros_digitales",
+    "descripcion": "Ninguna puerta exterior registró apertura durante el intervalo sin cámaras.",
+    "ubicacion": "Control de accesos, entradas y salidas del edificio",
+    "relevancia": "alta",
+    "descripcionAmpliada": "Los sensores de las puertas principales y de carga siguieron funcionando durante el apagón de las cámaras. No hay eventos de salida de objetos voluminosos ni de ingreso forzado en esos minutos."
+  },
+  {
+    "id": "DIG-03",
+    "titulo": "Prueba del relé eléctrico",
+    "categoria": "registros_digitales",
+    "descripcion": "La consola registra una prueba autorizada del relé, iniciada por mantenimiento a las 22:03.",
+    "ubicacion": "Panel de energía y sistema de mantenimiento",
+    "relevancia": "media",
+    "descripcionAmpliada": "La orden estaba programada desde el día anterior y el circuito de cámaras dependía de ese relé. El registro confirma una actividad técnica que coincide en el tiempo con la interrupción, pero no prueba que quien la ejecutó haya entrado a la galería."
+  },
+  {
+    "id": "DIG-04",
+    "titulo": "Salida de la coleccionista",
+    "categoria": "registros_digitales",
+    "descripcion": "La tarjeta de visitante de Valentina Cruz registró salida a las 21:42 y no volvió a ingresar.",
+    "ubicacion": "Lector del vestíbulo principal",
+    "relevancia": "media",
+    "descripcionAmpliada": "El registro es anterior al apagón de cámaras y coincide con la hora asentada por recepción. No documenta sus conversaciones previas ni sus motivos para visitar la exposición."
+  },
+  {
+    "id": "DIG-05",
+    "titulo": "Cola de impresión de facsímiles",
+    "categoria": "registros_digitales",
+    "descripcion": "El 16 de septiembre se enviaron tres archivos de facsímil a impresión desde una estación del taller de restauración.",
+    "ubicacion": "Servidor de impresión, estación R-02",
+    "relevancia": "alta",
+    "descripcionAmpliada": "Los archivos llevan nombres de catálogo correspondientes a las tres obras y sus metadatos indican preparación para impresión en soporte de lienzo. El registro identifica una estación y un turno, no a una persona por sí solo."
+  },
+  {
+    "id": "DIG-06",
+    "titulo": "Paso por el corredor este",
+    "categoria": "registros_digitales",
+    "descripcion": "Una credencial individual del turno de restauración abrió el acceso interno hacia la sala a las 22:08 y regresó a las 22:20.",
+    "ubicacion": "Lector interno entre restauración y corredor este",
+    "relevancia": "alta",
+    "descripcionAmpliada": "La credencial no abrió ninguna puerta exterior. El movimiento abarca el intervalo de la falla de cámaras y contradice la idea de que todo el personal de restauración permaneció en el taller durante ese lapso."
+  },
+  {
+    "id": "TES-01",
+    "titulo": "Declaración de Clara Montes",
+    "categoria": "testimonios",
+    "descripcion": "La curadora afirma que comprobó que los tres marcos estaban ocupados antes de abrir la exposición.",
+    "ubicacion": "Entrevista en la oficina de curaduría, 19 de septiembre",
+    "relevancia": "media",
+    "descripcionAmpliada": "Clara recuerda haber visto una obra en cada marco, pero no verificó números de inventario ni detalles de superficie. Dice que estuvo en la oficina administrativa durante el apagón y que una persona del equipo de recepción puede confirmarlo."
+  },
+  {
+    "id": "TES-02",
+    "titulo": "Declaración de Bruno Salcedo",
+    "categoria": "testimonios",
+    "descripcion": "El guardia dice que vigilaba el sector este y que atendió una alerta del pasillo de carga.",
+    "ubicacion": "Entrevista en el puesto de seguridad, 19 de septiembre",
+    "relevancia": "media",
+    "descripcionAmpliada": "Bruno admite que se alejó unos minutos de su puesto para revisar el aviso. Su recorrido coincide con los eventos de la tarjeta de patrulla; asegura que no vio a nadie salir del edificio."
+  },
+  {
+    "id": "TES-03",
+    "titulo": "Declaración de Tomás Rivas",
+    "categoria": "testimonios",
+    "descripcion": "El técnico confirma que ejecutó la prueba del relé desde el panel del subsuelo.",
+    "ubicacion": "Entrevista en el cuarto de mantenimiento, 19 de septiembre",
+    "relevancia": "media",
+    "descripcionAmpliada": "Tomás explica que la prueba se había solicitado para corregir fluctuaciones eléctricas y que estaba autorizada. Sostiene que no subió a la sala durante el intervalo y que otro técnico observó el panel."
+  },
+  {
+    "id": "TES-04",
+    "titulo": "Declaración de Valentina Cruz",
+    "categoria": "testimonios",
+    "descripcion": "La coleccionista reconoce que preguntó por la posibilidad de adquirir las obras.",
+    "ubicacion": "Entrevista telefónica, 20 de septiembre",
+    "relevancia": "media",
+    "descripcionAmpliada": "Valentina dice que la conversación fue exploratoria y que se retiró antes de las 22:00. El registro de recepción confirma su salida a las 21:42; su interés económico sigue siendo un dato a considerar."
+  },
+  {
+    "id": "TES-05",
+    "titulo": "Declaración de Elena Vargas",
+    "categoria": "testimonios",
+    "descripcion": "La asistente de restauración afirma que permaneció en el taller tomando mediciones de humedad.",
+    "ubicacion": "Entrevista en el taller de restauración, 19 de septiembre",
+    "relevancia": "alta",
+    "descripcionAmpliada": "Elena sitúa su trabajo entre las 21:50 y las 22:25 y dice que no entró a la sala esa noche. También recuerda que preguntó si el traslado privado propuesto tenía autorización. El registro del acceso interno consigna un desplazamiento del turno de restauración durante parte de ese período."
+  },
+  {
+    "id": "DOC-01",
+    "titulo": "Inventario de la colección",
+    "categoria": "documentos",
+    "descripcion": "El inventario firmado el 14 de septiembre registra los tres retratos originales y sus soportes de lino.",
+    "ubicacion": "Archivo de curaduría, carpeta de colección 2026",
+    "relevancia": "alta",
+    "descripcionAmpliada": "La lista incluye números de catálogo, dimensiones y notas sobre la trama del lienzo. Confirma la presencia documentada de las piezas en esa fecha, pero no certifica por sí sola que siguieran allí durante la exposición."
+  },
+  {
+    "id": "DOC-02",
+    "titulo": "Propuesta de traslado privado",
+    "categoria": "documentos",
+    "descripcion": "Una intermediaria propuso trasladar las tres obras a una colección privada después de la exposición.",
+    "ubicacion": "Correspondencia reservada del consejo de la galería",
+    "relevancia": "media",
+    "descripcionAmpliada": "La propuesta carece de autorización de préstamo y fue objetada por el consejo antes de aceptarse. El documento explica por qué alguien podría querer proteger o adquirir las obras, pero no identifica quién redactó la objeción."
+  },
+  {
+    "id": "DOC-03",
+    "titulo": "Vale de materiales de montaje",
+    "categoria": "documentos",
+    "descripcion": "El 16 de septiembre se retiraron soportes de lienzo y adhesivo reversible suficientes para tres montajes.",
+    "ubicacion": "Depósito de conservación, vale de turno tarde",
+    "relevancia": "alta",
+    "descripcionAmpliada": "El vale se cargó al turno de restauración y especifica materiales aptos para montajes temporales. No detalla qué obras se intervinieron ni quién colocó los soportes."
+  },
+  {
+    "id": "DOC-04",
+    "titulo": "Aviso de mantenimiento programado",
+    "categoria": "documentos",
+    "descripcion": "El personal recibió aviso de una prueba eléctrica que podía interrumpir brevemente las cámaras el 18 de septiembre.",
+    "ubicacion": "Tablón interno y correo de operaciones",
+    "relevancia": "media",
+    "descripcionAmpliada": "El aviso fue distribuido el 17 de septiembre y especificaba una ventana de prueba alrededor de las 22:00. Varias áreas podían conocer el horario; el documento no acredita quién lo utilizó."
+  },
+  {
+    "id": "FOT-01",
+    "titulo": "Registro de sala del 13 de septiembre",
+    "categoria": "fotografias",
+    "descripcion": "Una fotografía de archivo muestra los tres retratos instalados antes de los preparativos finales.",
+    "ubicacion": "Archivo fotográfico de la galería, 13 de septiembre",
+    "relevancia": "alta",
+    "descripcionAmpliada": "La imagen conserva detalles visibles de la trama y el brillo de las superficies. Su fecha precede a la cola de impresión registrada tres días después."
+  },
+  {
+    "id": "FOT-02",
+    "titulo": "Fotografía previa a la apertura",
+    "categoria": "fotografias",
+    "descripcion": "Una imagen tomada el 18 de septiembre muestra una obra en cada marco poco antes de abrir al público.",
+    "ubicacion": "Sala principal, registro de apertura de las 19:12",
+    "relevancia": "alta",
+    "descripcionAmpliada": "Al comparar la superficie visible con la fotografía de archivo, se aprecian diferencias en reflejos y textura. La distancia y la iluminación impiden una conclusión definitiva sin cotejar el inventario técnico."
+  }
+]
