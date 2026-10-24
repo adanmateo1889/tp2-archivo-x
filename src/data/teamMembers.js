@@ -25,7 +25,7 @@ const teamMembers = [
     id: 'AX-INV-03',
     slug: 'carmen-leonela-lamas',
     name: 'Carmen Leonela Lamas',
-    portraitPath: '/img/investigadores/carmen-leonela-lamas.jpg',
+    portraitPath: '/img/investigadores/carmen-leonela-lamas.png',
     presentation: 'De estudiar cómo funciona la vida a aprender a construir sistemas con código.',
     skillsAndInterests: ['SQL', 'HTML', 'CSS', 'JavaScript', 'Kotlin', 'Java'],
     github: 'https://github.com/Carleu27',
