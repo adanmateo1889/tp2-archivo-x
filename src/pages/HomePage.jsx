@@ -161,14 +161,6 @@ function HomePage() {
         </div>
       </section>
 
-      <div className="provisional-note">
-        <span aria-hidden="true">!</span>
-        <p>
-          <strong>Ilustración de portada.</strong> El tablero es una composición
-          gráfica creada con CSS; las evidencias del caso se consultan en sus
-          fichas y en el archivo local.
-        </p>
-      </div>
     </div>
   )
 }

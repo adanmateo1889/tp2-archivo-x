@@ -320,18 +320,6 @@ const componentTree = {
                                       routes: ['/documentacion'],
                                       description:
                                         'Explica navegación, tecnologías, persistencia local y fuentes de datos, con enlaces internos a las secciones vigentes.',
-                                      children: [
-                                        {
-                                          id: 'art-institute-api-status',
-                                          label: 'ArtInstituteApiStatus',
-                                          kind: 'reusable',
-                                          source: 'src/components/ArtInstituteApiStatus.jsx',
-                                          description:
-                                            'Verifica la API pública del Art Institute of Chicago sin consultar ni mostrar imágenes.',
-                                          usageNote:
-                                            'Se muestra en Documentación para conservar la integración académica con carga, error, respuesta vacía y reintento.',
-                                        },
-                                      ],
                                     },
                                     {
                                       id: 'not-found-page',

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import ArtInstituteApiStatus from '../components/ArtInstituteApiStatus.jsx'
 
 const routeGroups = [
   {
@@ -55,9 +54,9 @@ function DocumentationPage() {
           <p>Se guardan IDs de evidencias, deducciones y estado de acusación en este navegador.</p>
         </article>
         <article>
-          <span>FUENTES DE DATOS</span>
-          <h2>JSON local · API pública</h2>
-          <p>Las evidencias ficticias son locales; una consulta independiente verifica la API del museo.</p>
+          <span>ARCHIVO DE INVESTIGACIÓN</span>
+          <h2>JSON local</h2>
+          <p>El archivo reúne 25 evidencias ficticias con categorías para búsqueda y filtros.</p>
         </article>
       </section>
 
@@ -74,8 +73,6 @@ function DocumentationPage() {
           </ul>
         </section>
       ))}
-
-      <ArtInstituteApiStatus />
 
       <p className="documentation-storage-note">
         El progreso se guarda únicamente en el navegador actual. La opción

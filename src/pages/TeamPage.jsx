@@ -41,15 +41,6 @@ function TeamPage() {
         ))}
       </div>
 
-      <aside className="team-record-note">
-        <span aria-hidden="true">!</span>
-        <p>
-          Las fotografías de investigadores se gestionan por separado de las
-          obras robadas. Mientras no haya una foto en la ruta asignada, se
-          muestra un avatar neutro. Los datos personales provienen de Galería
-          Código (TP1); no se atribuyen responsabilidades no documentadas.
-        </p>
-      </aside>
     </section>
   )
 }
